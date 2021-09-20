@@ -5,6 +5,10 @@ import PlanetsContext from './PlanetsContext';
 
 const PlanetsProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [inputName, setInputName] = useState('');
+  const [column, setColumn] = useState('population');
+  const [comparison, setComparison] = useState('maior que');
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -19,6 +23,20 @@ const PlanetsProvider = ({ children }) => {
 
   const context = {
     data,
+    filters: {
+      filterByName: {
+        inputName,
+      },
+      filterByNumericValues: {
+        column,
+        comparison,
+        value,
+      },
+    },
+    setInputName,
+    setColumn,
+    setComparison,
+    setValue,
   };
 
   return (
