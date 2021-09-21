@@ -9,6 +9,7 @@ const PlanetsProvider = ({ children }) => {
   const [column, setColumn] = useState('population');
   const [comparison, setComparison] = useState('maior que');
   const [value, setValue] = useState(0);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -21,8 +22,13 @@ const PlanetsProvider = ({ children }) => {
     fetchAPI();
   }, []);
 
+  const handleFilterButton = () => {
+    setButtonClicked(true);
+  };
+
   const context = {
     data,
+    buttonClicked,
     filters: {
       filterByName: {
         inputName,
@@ -37,6 +43,7 @@ const PlanetsProvider = ({ children }) => {
     setColumn,
     setComparison,
     setValue,
+    handleFilterButton,
   };
 
   return (
