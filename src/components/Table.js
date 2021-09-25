@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
-const Table = () => {
-  // const [operation, setOperation] = useState('');
+function Table() {
   const { data, buttonClicked,
     filters:
       { filterByName: { inputName },
-        filterByNumericValues:
-        { column, comparison, value } } } = useContext(PlanetsContext);
+        filterByNumericValues: [{
+          column, comparison, value }] } } = useContext(PlanetsContext);
+  // const { column, comparison, value } = filterByNumericValues;
 
+  // Função para utilizar determinada comparação dependendo do valor de comparison
   const comparisonElement = (element1, element2) => {
     if (comparison === 'maior que') {
       return (Number(element1) > element2);
@@ -19,11 +20,8 @@ const Table = () => {
     if (comparison === 'igual a') {
       return (element1 === element2);
     }
-    console.log(typeof (element1));
   };
-  // console.log(comparisonElement(2, value));
-  // const keyTable = (data.map((item) => Object.keys(item)))[0];
-  // console.log(keyTable);
+
   if (buttonClicked === false) {
     return (
       <div>
@@ -140,6 +138,6 @@ const Table = () => {
       </table>
     </div>
   );
-};
+}
 
 export default Table;
