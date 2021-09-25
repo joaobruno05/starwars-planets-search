@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import getPlanets from '../services/API';
 import PlanetsContext from './PlanetsContext';
-import { optionsColumn } from '../components/FilterColumn';
+// import { optionsColumn } from '../components/FilterColumn';
 
 const PlanetsProvider = ({ children }) => {
   const [data, setData] = useState([]);
@@ -35,10 +35,10 @@ const PlanetsProvider = ({ children }) => {
 
   const handleFilterButton = () => {
     setButtonClicked(true);
-    const { filterByNumericValues: [{ column }] } = filters;
+    // const { filterByNumericValues: [{ column }] } = filters;
 
-    const indexColumn = optionsColumn.indexOf(column);
-    delete optionsColumn[indexColumn];
+    // const indexColumn = optionsColumn.indexOf(column);
+    // delete optionsColumn[indexColumn];
   };
 
   const context = {

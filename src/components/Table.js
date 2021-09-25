@@ -108,7 +108,6 @@ function Table() {
         </tbody>
 
         <tbody>
-
           {
             data
               .filter((item) => comparisonElement(item[column], value))
