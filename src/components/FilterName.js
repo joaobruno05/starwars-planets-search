@@ -13,6 +13,12 @@ const FilterName = () => {
         inputName: target.value,
       },
     });
+    // setFilters((prevState) => ({
+    //   ...prevState.filters,
+    //   filterByName: {
+    //     inputName: target.value,
+    //   },
+    // }));
   };
 
   return (

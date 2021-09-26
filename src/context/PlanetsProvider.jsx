@@ -35,6 +35,16 @@ const PlanetsProvider = ({ children }) => {
 
   const handleFilterButton = () => {
     setButtonClicked(true);
+    const { filterByNumericValues: { column, comparison, value } } = filters;
+    setFilters({
+      ...filters,
+      filterByNumericValues: filters.filterByNumericValues.concat({
+        column,
+        comparison,
+        value,
+      }),
+    });
+    console.log(column);
     // const { filterByNumericValues: [{ column }] } = filters;
 
     // const indexColumn = optionsColumn.indexOf(column);
