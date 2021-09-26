@@ -19,8 +19,10 @@ function FilterColumn() {
   useEffect(() => {
     const indexColumn = optionsColumn.indexOf(column);
     if (buttonClicked) {
-      delete optionsColumn[indexColumn];
-      setOptions(optionsColumn);
+      const filterOptionsColumn = optionsColumn
+        .filter((option) => option !== optionsColumn[indexColumn]);
+      // console.log(filterOptionsColumn);
+      setOptions(filterOptionsColumn);
     }
   }, [column, buttonClicked]);
 
