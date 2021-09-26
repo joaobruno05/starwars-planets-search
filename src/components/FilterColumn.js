@@ -12,9 +12,9 @@ export const optionsColumn = [
 function FilterColumn() {
   const [options, setOptions] = useState([...optionsColumn]);
   const {
-    filters, setFilters, buttonClicked, setButtonClicked,
+    column, setColumn, buttonClicked, setButtonClicked,
   } = useContext(PlanetsContext);
-  const { filterByNumericValues: [{ column, comparison, value }] } = filters;
+  // const { filterByNumericValues: [{ column }] } = filters;
 
   useEffect(() => {
     const indexColumn = optionsColumn.indexOf(column);
@@ -24,15 +24,19 @@ function FilterColumn() {
     }
   }, [column, buttonClicked]);
 
+  // const handleFilterColumn = ({ target }) => {
+  //   setFilters({
+  //     ...filters,
+  //     filterByNumericValues: [{
+  //       column: target.value,
+  //       comparison,
+  //       value,
+  //     }],
+  //   });
+  //   setButtonClicked(false);
+  // };
   const handleFilterColumn = ({ target }) => {
-    setFilters({
-      ...filters,
-      filterByNumericValues: [{
-        column: target.value,
-        comparison,
-        value,
-      }],
-    });
+    setColumn(target.value);
     setButtonClicked(false);
   };
 
@@ -44,7 +48,6 @@ function FilterColumn() {
         value={ column }
         data-testid="column-filter"
         onChange={ handleFilterColumn }
-        // onChange={ ({ target }) => setColumn(target.value) }
       >
         { options.map((option, index) => (
           <option key={ index } value={ option }>{option}</option>

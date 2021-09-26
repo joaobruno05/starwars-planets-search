@@ -2,7 +2,13 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function FilterButton() {
-  const { handleFilterButton } = useContext(PlanetsContext);
+  const {
+    setButtonClicked, setNumericFilter, column, comparison, value,
+  } = useContext(PlanetsContext);
+  const handleFilterButton = () => {
+    setButtonClicked(true);
+    setNumericFilter({ column, comparison, value });
+  };
 
   return (
     <div>

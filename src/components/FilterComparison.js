@@ -8,18 +8,22 @@ export const comparisonsSelect = [
 ];
 
 function FilterComparison() {
-  const { filters, setFilters, setButtonClicked } = useContext(PlanetsContext);
-  const { filterByNumericValues: [{ column, comparison, value }] } = filters;
+  const { comparison, setComparison, setButtonClicked } = useContext(PlanetsContext);
+  // const { filterByNumericValues: [{ comparison }] } = filters;
 
+  // const handleFilterComparison = ({ target }) => {
+  //   setFilters({
+  //     ...filters,
+  //     filterByNumericValues: [{
+  //       column,
+  //       comparison: target.value,
+  //       value,
+  //     }],
+  //   });
+  //   setButtonClicked(false);
+  // };
   const handleFilterComparison = ({ target }) => {
-    setFilters({
-      ...filters,
-      filterByNumericValues: [{
-        column,
-        comparison: target.value,
-        value,
-      }],
-    });
+    setComparison(target.value);
     setButtonClicked(false);
   };
 

@@ -4,9 +4,8 @@ import PlanetsContext from '../context/PlanetsContext';
 function Table() {
   const { data, buttonClicked,
     filters:
-      { filterByName: { inputName },
-        filterByNumericValues: [{
-          column, comparison, value }] } } = useContext(PlanetsContext);
+      { filterByName: { inputName } },
+    column, comparison, value } = useContext(PlanetsContext);
   // const { column, comparison, value } = filterByNumericValues;
 
   // Função para utilizar determinada comparação dependendo do valor de comparison

@@ -7,19 +7,15 @@ import PlanetsContext from './PlanetsContext';
 const PlanetsProvider = ({ children }) => {
   const [data, setData] = useState([]);
   // const [inputName, setInputName] = useState('');
-  // const [column, setColumn] = useState('population');
-  // const [comparison, setComparison] = useState('maior que');
-  // const [value, setValue] = useState(0);
+  const [column, setColumn] = useState('population');
+  const [comparison, setComparison] = useState('maior que');
+  const [value, setValue] = useState('');
   const [buttonClicked, setButtonClicked] = useState(false);
   const [filters, setFilters] = useState({
     filterByName: {
       inputName: '',
     },
-    filterByNumericValues: [{
-      column: 'population',
-      comparison: 'maior que',
-      value: 0,
-    }],
+    filterByNumericValues: [],
   });
 
   useEffect(() => {
@@ -33,23 +29,24 @@ const PlanetsProvider = ({ children }) => {
     fetchAPI();
   }, []);
 
-  const handleFilterButton = () => {
-    setButtonClicked(true);
-    const { filterByNumericValues: { column, comparison, value } } = filters;
+  const inputNamePlanet = (namePlanet) => {
     setFilters({
       ...filters,
-      filterByNumericValues: filters.filterByNumericValues.concat({
-        column,
-        comparison,
-        value,
-      }),
+      filterByName: { ...filters.filterByName, inputName: namePlanet },
     });
-    console.log(column);
-    // const { filterByNumericValues: [{ column }] } = filters;
-
-    // const indexColumn = optionsColumn.indexOf(column);
-    // delete optionsColumn[indexColumn];
   };
+
+  const setNumericFilter = (numericFilter) => {
+    // const { filterByNumericValues } = filters;
+    setFilters({
+      ...filters,
+      filterByNumericValues: [...filters.filterByNumericValues, numericFilter],
+    });
+  };
+
+  // const handleFilterButton = () => {
+  //   setButtonClicked(true);
+  // };
 
   const context = {
     data,
@@ -57,6 +54,7 @@ const PlanetsProvider = ({ children }) => {
     filters,
     setButtonClicked,
     setFilters,
+    setNumericFilter,
     // filters: {
     //   filterByName: {
     //     inputName,
@@ -67,11 +65,16 @@ const PlanetsProvider = ({ children }) => {
     //     value,
     //   }],
     // },
+    // inputName,
+    column,
+    comparison,
+    value,
     // setInputName,
-    // setColumn,
-    // setComparison,
-    // setValue,
-    handleFilterButton,
+    inputNamePlanet,
+    setColumn,
+    setComparison,
+    setValue,
+    // handleFilterButton,
   };
 
   return (

@@ -2,18 +2,22 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function FilterValue() {
-  const { filters, setFilters, setButtonClicked } = useContext(PlanetsContext);
-  const { filterByNumericValues: [{ column, comparison, value }] } = filters;
+  const { value, setValue, setButtonClicked } = useContext(PlanetsContext);
+  // const { filterByNumericValues: [{ value }] } = filters;
 
+  // const handleFilterValue = ({ target }) => {
+  //   setFilters({
+  //     ...filters,
+  //     filterByNumericValues: [{
+  //       column,
+  //       comparison,
+  //       value: target.value,
+  //     }],
+  //   });
+  //   setButtonClicked(false);
+  // };
   const handleFilterValue = ({ target }) => {
-    setFilters({
-      ...filters,
-      filterByNumericValues: [{
-        column,
-        comparison,
-        value: target.value,
-      }],
-    });
+    setValue(target.value);
     setButtonClicked(false);
   };
 

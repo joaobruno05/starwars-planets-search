@@ -2,24 +2,20 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 const FilterName = () => {
+  const { filters, inputNamePlanet } = useContext(PlanetsContext);
+  const { filterByName: { inputName } } = filters;
   // const {
   //   filters: { filterByName: { inputName } }, setInputName } = useContext(PlanetsContext);
-  const { filters, setFilters, inputName } = useContext(PlanetsContext);
+  // const { filters, setFilters, inputName } = useContext(PlanetsContext);
 
-  const inputNamePlanet = ({ target }) => {
-    setFilters({
-      ...filters,
-      filterByName: {
-        inputName: target.value,
-      },
-    });
-    // setFilters((prevState) => ({
-    //   ...prevState.filters,
-    //   filterByName: {
-    //     inputName: target.value,
-    //   },
-    // }));
-  };
+  // const inputNamePlanet = ({ target }) => {
+  //   setFilters({
+  //     ...filters,
+  //     filterByName: {
+  //       inputName: target.value,
+  //     },
+  //   });
+  // };
 
   return (
     <div>
@@ -31,7 +27,7 @@ const FilterName = () => {
           value={ inputName }
           id="planet"
           data-testid="name-filter"
-          onChange={ inputNamePlanet }
+          onChange={ ({ target }) => inputNamePlanet(target.value) }
         />
       </label>
     </div>
